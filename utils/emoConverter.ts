@@ -52,11 +52,11 @@ export function convertToClassicEmo(text: string): string {
     const char = processed[i];
     const replacement = classicEmoMap[char];
     
-    // Add some random casing
+    // Add some random casing (skip for special chars like ß that might transform unexpectedly)
     let finalChar = replacement || char;
-    if (Math.random() > 0.5) {
+    if (finalChar !== 'ß' && Math.random() > 0.5) {
       finalChar = finalChar.toUpperCase();
-    } else {
+    } else if (finalChar !== 'ß') {
       finalChar = finalChar.toLowerCase();
     }
     
