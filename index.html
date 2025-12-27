@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Emo Converter - MSN Nostalji</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #050505;
+            color: #ff00ff;
+            font-family: 'Comic Neue', cursive;
+            background-image: 
+                linear-gradient(to right, #111 1px, transparent 1px),
+                linear-gradient(to bottom, #111 1px, transparent 1px);
+            background-size: 40px 40px;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        .neon-box {
+            border: 2px solid #ff00ff;
+            box-shadow: 0 0 10px #ff00ff, inset 0 0 5px #ff00ff;
+        }
+        .neon-text {
+            text-shadow: 0 0 8px #ff00ff;
+        }
+        .msn-button {
+            background: linear-gradient(180deg, #ff00ff 0%, #990099 100%);
+            border: 2px solid #fff;
+            box-shadow: 2px 2px 0px #333;
+        }
+        .msn-button:active {
+            box-shadow: 0px 0px 0px #333;
+            transform: translate(2px, 2px);
+        }
+        .scanlines {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+            background-size: 100% 2px, 3px 100%;
+            pointer-events: none;
+            z-index: 50;
+        }
+        
+        /* Background Text Styling - Improved Visibility */
+        .bg-side-text {
+            position: fixed;
+            font-size: 18vw;
+            font-weight: 900;
+            line-height: 1;
+            pointer-events: none;
+            z-index: 0; /* Changed to 0 to be above body background but behind root content */
+            user-select: none;
+            text-transform: uppercase;
+            letter-spacing: -0.05em;
+            opacity: 0.15; /* Increased opacity */
+            white-space: nowrap;
+        }
+        .bg-left {
+            left: -2vw;
+            top: 50%;
+            transform: translateY(-50%) rotate(-90deg);
+            color: #ff00ff;
+            text-shadow: 0 0 30px rgba(255, 0, 255, 0.5);
+        }
+        .bg-right {
+            right: -2vw;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            color: #00ffff;
+            text-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
+        }
+
+        #root {
+            position: relative;
+            z-index: 10; /* Ensure content is above background text */
+        }
+
+        @media (max-width: 768px) {
+            .bg-side-text {
+                font-size: 25vw;
+                opacity: 0.1;
+            }
+            .bg-left { left: -8vw; }
+            .bg-right { right: -8vw; }
+        }
+    </style>
+<script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "@google/genai": "https://esm.sh/@google/genai@^1.34.0"
+  }
+}
+</script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <div class="scanlines"></div>
+    <!-- Background elements -->
+    <div class="bg-side-text bg-left">EMO</div>
+    <div class="bg-side-text bg-right">CORE</div>
+    <div id="root"></div>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
